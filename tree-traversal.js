@@ -1,4 +1,3 @@
-const { LOADIPHLPAPI } = require("dns");
 
 //Javascript tree representation
 class Node {
@@ -9,20 +8,20 @@ class Node {
     }
 }
 
-// const a = new Node('a');
-// const b = new Node('b');
-// const d = new Node('d');
-// const c = new Node('c');
-// const e = new Node('e');
-// const f = new Node('f');
+const a = new Node('a');
+const b = new Node('b');
+const d = new Node('d');
+const c = new Node('c');
+const e = new Node('e');
+const f = new Node('f');
 
-//cases you will need numeric values
-const a = new Node(10);
-const b = new Node(2);
-const d = new Node(39);
-const c = new Node(34);
-const e = new Node(56);
-const f = new Node(6);
+// //cases you will need numeric values
+// const a = new Node(10);
+// const b = new Node(2);
+// const d = new Node(39);
+// const c = new Node(34);
+// const e = new Node(56);
+// const f = new Node(6);
 a.left = b;
 a.right = c;
 b.left = d;
@@ -153,6 +152,27 @@ function minTreeValueBfs(tree) {
 
 minTreeValueBfs(a)
 
+
+function MirrorTree(tree) {
+    if (tree === null) return;
+    let q = [tree];
+    while (q.length > 0) {
+        const searchValue = q.shift();
+        let temp = searchValue.left;
+        searchValue.left = searchValue.right;
+        searchValue.right = temp;
+        if (searchValue.left !== null) {
+            q.push(searchValue.left)
+        }
+        if (searchValue.right !== null) {
+            q.push(searchValue.right)
+        }
+
+    }
+    console.log(tree);
+}
+
+MirrorTree(a)
 
 
 
